@@ -92,7 +92,7 @@ public class Room{
         if(i == randomInput && room[i][0] != 2) {
           room[0][i] = 3;
         } else {
-          createOutput();
+
         }
       }
     }
@@ -103,7 +103,7 @@ public class Room{
         if(i == randomInput && room[i][0] != 2) {
           room[i][width - 1] = 3;
         } else {
-          createOutput();
+
         }
       }
     }
@@ -114,7 +114,7 @@ public class Room{
         if(i == randomInput && room[i][0] != 2) {
           room[height - 1][i] = 3;
         } else {
-          createOutput();
+
         }
       }
     }
@@ -125,7 +125,7 @@ public class Room{
         if(i == randomInput && room[i][0] != 2) {
           room[i][0] = 3;
         } else {
-          createOutput();
+
         }
       }
     }
