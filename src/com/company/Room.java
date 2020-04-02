@@ -48,34 +48,31 @@ public class Room{
   //Генерация входа в комнату
   public void createInput(){
     if(sideDoor == 0) {
-      int randomInput = (int)(Math.random() * this.width);
+      int randomInput = (int)(Math.random() * (this.width - 2)) + 1;
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
           room[0][i] = 2;
         }
       }
     }
-
     if(sideDoor == 1) {
-      int randomInput = (int)(Math.random() * this.height);
+      int randomInput = (int)(Math.random() * (this.height - 2)) + 1;
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][width - 1] = 2;
         }
       }
     }
-
     if(sideDoor == 2) {
-      int randomInput = (int)(Math.random() * this.width);
+      int randomInput = (int)(Math.random() * (this.width - 2)) + 1;
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
           room[height - 1][i] = 2;
         }
       }
     }
-
     if(sideDoor == 3) {
-      int randomInput = (int)(Math.random() * this.height);
+      int randomInput = (int)(Math.random() * (this.height - 2)) + 1;
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][0] = 2;
@@ -88,7 +85,7 @@ public class Room{
   public void createOutput(){
 
     if(sideDoor == 2) {
-      int randomInput = (int)(Math.random() * this.width);
+      int randomInput = (int)(Math.random() * (this.width - 2)) + 1;
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
           room[0][i] = 3;
@@ -98,7 +95,7 @@ public class Room{
 
 
     if(sideDoor == 3) {
-      int randomInput = (int)(Math.random() * this.height);
+      int randomInput = (int)(Math.random() * (this.height - 2)) + 1;
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][width - 1] = 3;
@@ -107,7 +104,7 @@ public class Room{
     }
 
     if(sideDoor == 0) {
-      int randomInput = (int)(Math.random() * this.width);
+      int randomInput = (int)(Math.random() * (this.width - 2)) + 1;
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
           room[height - 1][i] = 3;
@@ -116,7 +113,7 @@ public class Room{
     }
 
     if(sideDoor == 1) {
-      int randomInput = (int)(Math.random() * this.width);
+      int randomInput = (int)(Math.random() * (this.height - 2)) + 1;
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][0] = 3;
@@ -124,7 +121,46 @@ public class Room{
       }
     }
   }
+
+
+  //Спавн игрока
+  public void spawnPlayer(){
+    if(sideDoor == 0) {
+      for(int i = 0; i < this.width; i++) {
+        if(room[0][i] == 2) {
+          room[1][i] = 4;
+          break;
+        }
+      }
+    }
+    if(sideDoor == 1) {
+      for(int i = 0; i < this.height; i++) {
+        if(room[i][width - 1] == 2) {
+          room[i][width - 2] = 4;
+          break;
+        }
+      }
+    }
+    if(sideDoor == 2) {
+      for(int i = 0; i < this.width; i++) {
+        if(room[height - 1][i] == 2) {
+          room[height - 2][i] = 4;
+          break;
+        }
+      }
+    }
+    if(sideDoor == 3) {
+      for(int i = 0; i < this.height; i++) {
+        if(room[i][0] == 2) {
+          room[i][1] = 4;
+          break;
+        }
+      }
+    }
+  }
+
 }
+
 
 
 
