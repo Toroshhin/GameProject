@@ -5,6 +5,7 @@ public class Room{
   int[][] room;
   int width;
   int height;
+  int sideDoor;
 
   //Прорисовка комнаты
   public void renderRoom(){
@@ -23,6 +24,7 @@ public class Room{
     this.height = 3 + (int)(Math.random() * 7); // Генерация Высоты матрицы
     this.width = 3 + (int)(Math.random() * 7); // Генерация Ширины матрицы
     this.room = new int[this.height][this.width];
+    this.sideDoor = (int)(Math.random() * 4); // Рандом выбор стороны для входа/выхода
 
 
     for(int i = 0; i < this.height; i++) {
@@ -45,8 +47,7 @@ public class Room{
 
   //Генерация входа в комнату
   public void createInput(){
-    int randomSide = (int)(Math.random() * 4); // Рандом выбор стороны для входа
-    if(randomSide == 0) {
+    if(sideDoor == 0) {
       int randomInput = (int)(Math.random() * this.width);
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
@@ -55,8 +56,8 @@ public class Room{
       }
     }
 
-    if(randomSide == 1) {
-      int randomInput = (int)(Math.random() * this.width);
+    if(sideDoor == 1) {
+      int randomInput = (int)(Math.random() * this.height);
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][width - 1] = 2;
@@ -64,7 +65,7 @@ public class Room{
       }
     }
 
-    if(randomSide == 2) {
+    if(sideDoor == 2) {
       int randomInput = (int)(Math.random() * this.width);
       for(int i = 0; i < this.width; i++) {
         if(i == randomInput) {
@@ -73,8 +74,8 @@ public class Room{
       }
     }
 
-    if(randomSide == 3) {
-      int randomInput = (int)(Math.random() * this.width);
+    if(sideDoor == 3) {
+      int randomInput = (int)(Math.random() * this.height);
       for(int i = 0; i < this.height; i++) {
         if(i == randomInput) {
           room[i][0] = 2;
@@ -85,53 +86,47 @@ public class Room{
 
   //Генерация выхода из комнаты
   public void createOutput(){
-    int randomSideOut = (int)(Math.random() * 4); // Рандом выбор стороны для входа
-    if(randomSideOut == 0) {
+
+    if(sideDoor == 2) {
       int randomInput = (int)(Math.random() * this.width);
       for(int i = 0; i < this.width; i++) {
-        if(i == randomInput && room[i][0] != 2) {
+        if(i == randomInput) {
           room[0][i] = 3;
-        } else {
-
         }
       }
     }
 
-    if(randomSideOut == 1) {
-      int randomInput = (int)(Math.random() * this.width);
+
+    if(sideDoor == 3) {
+      int randomInput = (int)(Math.random() * this.height);
       for(int i = 0; i < this.height; i++) {
-        if(i == randomInput && room[i][0] != 2) {
+        if(i == randomInput) {
           room[i][width - 1] = 3;
-        } else {
-
         }
       }
     }
 
-    if(randomSideOut == 2) {
+    if(sideDoor == 0) {
       int randomInput = (int)(Math.random() * this.width);
       for(int i = 0; i < this.width; i++) {
-        if(i == randomInput && room[i][0] != 2) {
+        if(i == randomInput) {
           room[height - 1][i] = 3;
-        } else {
-
         }
       }
     }
 
-    if(randomSideOut == 3) {
+    if(sideDoor == 1) {
       int randomInput = (int)(Math.random() * this.width);
       for(int i = 0; i < this.height; i++) {
-        if(i == randomInput && room[i][0] != 2) {
+        if(i == randomInput) {
           room[i][0] = 3;
-        } else {
-
         }
       }
     }
   }
-
 }
+
+
 
 
 
